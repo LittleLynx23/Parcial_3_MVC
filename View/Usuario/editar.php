@@ -8,11 +8,11 @@ startblock('article');
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-9">
-                        <h3 class="font-weight-bold text-primary">Editar Admin</h3>
+                        <h3 class="font-weight-bold text-primary">Editar usuario</h3>
                         <h6 class="font-weight-normal mb-0"></h6>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-custom bg-inverse-info">
-                                <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                                <li class="breadcrumb-item"><a href="#">Usuario</a></li>
                                 <li class="breadcrumb-item active">Editar</li>
                             </ol>
                         </nav> 
@@ -24,15 +24,15 @@ startblock('article');
 </div> 
 <div class="card">
     <div class="card-body card border-left-success">
-        <form id="form_admin">
-            <input id="hidden" name="id" value="<?php echo $id ?>">
-            <input id="campo" name="campo" value="nAdmin_id" type="hidden">
-            <input id="id" name="tabla" value="tAdmin" type="hidden">
+        <form id="form_usuario">
+            <input id="id" name="id" value="<?php echo $id ?>" type="hidden">
+            <input id="campo" name="campo" value="nUsuario_id" type="hidden">
+            <input id="id" name="tabla" value="tUsuario" type="hidden">
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="nombre">Nombres:</label>
-                        <input type="text" class="form-control" id="nombre" name="datos[cNombre]" value="<?php echo $detalle["cNombre"]?>">
+                        <label for="nick">Nick:</label>
+                        <input type="text" class="form-control" id="nick" name="datos[cNick]" value="<?php echo $detalle["cNick"]?>">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -48,7 +48,7 @@ startblock('article');
                 class="btn btn-primary btn-user btn-block" 
                 onclick="edit()" 
                 style="width: auto;">  
-                Guardar
+                Editar
             </button>   
                        
         </form>
@@ -59,11 +59,11 @@ startblock('article');
 <script>
     function edit(){
         
-        var formData = new FormData(document.getElementById("form_admin"));
+        var formData = new FormData(document.getElementById("form_usuario"));
         formData.append("dato","valor");
 
             $.ajax({
-                url:'<?php echo BASE_URL?>admin/actualizar',
+                url:'<?php echo BASE_URL?>usuario/actualizar',
                 type: "post",
                 dataType: "html",
                 data: formData,
@@ -82,7 +82,7 @@ startblock('article');
                     confirmButtonText: 'OK'
                 }).then(() => {
                     if(rta['tipo']!="danger"){
-                        window.location.href = '<?php echo BASE_URL?>admin/lista'
+                        window.location.href = '<?php echo BASE_URL?>usuario/lista';
                     }
                 }); 
             });

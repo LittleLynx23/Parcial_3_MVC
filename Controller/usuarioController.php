@@ -1,39 +1,39 @@
 <?php
-require_once 'Entities/admin.php';
-require_once "Model/adminModel.php";
+require_once 'Entities/usuario.php';
+require_once "Model/usuarioModel.php";
 
-class adminController{
+class usuarioController{
 
-    private $model_admin;
+    private $model_usuario;
 
     public function __construct(){
-        $this->model_admin = new adminModel();
+        $this->model_usuario = new usuarioModel();
     }
 
     public function lista(){
-        $lista = $this->model_admin->listar("tadmin");
-        require_once "View/Admin/admin.php";
+        $lista = $this->model_usuario->listar("tusuario");
+        require_once "View/Usuario/usuario.php";
 
     }
     
-    //Para ver la vista del admin nuevo que se va a agregar
+    //Para ver la vista del usuario nuevo que se va a agregar
     public function nuevo(){
-        require_once "View/Admin/nuevo.php";
+        require_once "View/Usuario/nuevo.php";
     }
 
-    //Para ver la vista de editar un admin
+    //Para ver la vista de editar un usuario
     public function editar(){
         $id = trim($_GET['id']);
         if(empty($id)){    
             $detalle = false;
         }else{
-            $detalle = $this->model_admin->editar('tadmin','nAdmin_id',$id);
+            $detalle = $this->model_usuario->editar('tusuario','nUsuario_id',$id);
         }
-        require_once "View/Admin/editar.php";
+        require_once "View/Usuario/editar.php";
     }
 
     public function actualizar(){
-        $editar = new AdminModel();
+        $editar = new UsuarioModel();
         $datos = $_POST["datos"];
         $id = $_POST["id"];
         $tabla = $_POST["tabla"];
@@ -52,10 +52,10 @@ class adminController{
         echo json_encode($msg);
     }
 
-    //Esto es para agregar un nuevo admin (lo tomé del archivo de agregar.php del mono)
+    //Esto es para agregar un nuevo usuario (lo tomé del archivo de agregar.php del mono)
     public function agregar(){
 
-        $guardar = new AdminModel();
+        $guardar = new UsuarioModel();
         $datos = $_POST["datos"];
         $tabla = $_POST["tabla"];
         $save = $guardar->guardar($tabla, $datos);
@@ -73,7 +73,7 @@ class adminController{
 
     //Esto lo tomé de eliminar.php del mono que es para eliminar desde la lista
     public function eliminar(){
-        $eliminar = new AdminModel();
+        $eliminar = new UsuarioModel();
         $id = $_POST["id"];
         $tabla = $_POST["tabla"];
         $campo = $_POST["campo"];

@@ -1,8 +1,8 @@
 <?php
 require_once "core/BaseDatos.php";
-require_once "Entities/admin.php";
+require_once "Entities/usuario.php";
 
-class AdminModel extends Conectar{
+class UsuarioModel extends Conectar{
     public function __construct(){
         parent::__construct();
     }
@@ -18,10 +18,10 @@ class AdminModel extends Conectar{
 	}
 
 
-	public function agregar_admin($cNombre, $cClave, $lestado){
-		$query_save = "Insert into tadmin(cNombre,cClave,lestado) value(:cNombre,:cClave, :lestado)";
+	public function agregar_usuario($cNick, $cClave, $lestado){
+		$query_save = "Insert into tusuario(cNick,cClave,lestado) value(:cNick,:cClave, :lestado)";
         $guardar = $this->conexion->prepare($query_save);
-        $guardar->bindParam(':cNombre', $datos['cNombre']);
+        $guardar->bindParam(':cNick', $datos['cNick']);
         $guardar->bindParam(':cClave', $datos['cClave']);
         $guardar->bindParam(':lestado', $datos['lestado']);
         $guardar->execute();
