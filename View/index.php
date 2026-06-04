@@ -1,7 +1,7 @@
 <?php 
-require_once "public/plantilla.html";
+require_once "Public/Plantilla.html";
 startblock('article');
-var_dump($listado);
+
 ?>
     <h1>Proyecto MVC funcionando correctamente 🚀</h1>
 <?php  endblock();?>
